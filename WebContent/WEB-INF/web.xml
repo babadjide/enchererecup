@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <filter>
+     <filter-name>Set Character Encoding</filter-name>
+     <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+     <init-param>
+        <param-name>encoding</param-name>
+        <param-value>UTF-8</param-value>
+     </init-param>
+     <init-param>
+        <param-name>ignore</param-name>
+        <param-value>false</param-value>
+     </init-param>
+  </filter>
+  <filter-mapping>
+     <filter-name>Set Character Encoding</filter-name>
+     <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <servlet>
+    <servlet-name>Inscription</servlet-name>
+    <servlet-class>com.tpcloud.servlets.Inscription</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Inscription</servlet-name>
+    <url-pattern>/inscription</url-pattern>
+  </servlet-mapping>  
+  
+ <servlet>
+	<servlet-name>Connexion</servlet-name>
+	<servlet-class>com.tpcloud.servlets.Connexion</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	<servlet-name>Connexion</servlet-name>
+	<url-pattern>/connexion</url-pattern>
+ </servlet-mapping>
+ 
+  <servlet>
+	<servlet-name>Deconnexion</servlet-name>
+	<servlet-class>com.tpcloud.servlets.Deconnexion</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	<servlet-name>Deconnexion</servlet-name>
+	<url-pattern>/deconnexion</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+	<servlet-name>TableauBordUtilisateur</servlet-name>
+	<servlet-class>com.tpcloud.servlets.TableauBordUtilisateur</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	<servlet-name>TableauBordUtilisateur</servlet-name>
+	<url-pattern>/espaceachatvente</url-pattern>
+ </servlet-mapping>
+ 
+ <servlet>
+	<servlet-name>NouvelleMise</servlet-name>
+	<servlet-class>com.tpcloud.servlets.NouvelleMise</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	<servlet-name>NouvelleMise</servlet-name>
+	<url-pattern>/nouvellemise</url-pattern>
+ </servlet-mapping>
+ 
+  <servlet>
+	<servlet-name>NouvelleVente</servlet-name>
+	<servlet-class>com.tpcloud.servlets.NouvelleVente</servlet-class>
+ </servlet>
+ <servlet-mapping>
+	<servlet-name>NouvelleVente</servlet-name>
+	<url-pattern>/nouvellevente</url-pattern>
+ </servlet-mapping>
+</web-app>
+
+
