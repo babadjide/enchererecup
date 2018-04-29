@@ -16,9 +16,9 @@ public class DbConnexion {
 		}
 		
 		/* Connexion à la base de données */
-		String url = "jdbc:mysql://localhost:3306/bdd_enchere";
-		String utilisateur = "rony";
-		String motDePasse = "Pm32rony,";
+		String url = "bt6gmrwbm-mysql.services.clever-cloud.com:3306/bdd_enchere";
+		String utilisateur = "uoizcqliocvbhu53";
+		String motDePasse = "bt6gmrwbm";
 		java.sql.Connection connexion = null;
 		try {
 			connexion = DriverManager.getConnection( url, utilisateur, motDePasse );
