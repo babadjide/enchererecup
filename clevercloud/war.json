@@ -8,7 +8,7 @@
 		"war": [
 		{
 			"file": "WebContent/enchererecup.war",
-			"context": "/"
+			"context": "connexion"
 		}
 		]
 	}
