@@ -32,7 +32,7 @@
  </servlet>
  <servlet-mapping>
 	<servlet-name>Connexion</servlet-name>
-	<url-pattern>/http://tpcloudgroupe2.cleverapps.io/</url-pattern>
+	<url-pattern>/connexion</url-pattern>
  </servlet-mapping>
  
   <servlet>
