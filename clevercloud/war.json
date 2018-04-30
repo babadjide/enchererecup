@@ -1,9 +1,15 @@
 {
-	"deploy":{
-		"container":"TOMCAT7",
+	"build": {
+		"type": "war",
+		"goal": "build"
+	},
+	"deploy": {
+		"container": "TOMCAT7",
 		"war": [
 		{
-			"file": "WebContent/enchererecup.war"
+			"file": "WebContent/enchererecup.war",
+			"context": "/"
 		}
+		]
 	}
 }
