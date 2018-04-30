@@ -1,5 +1,9 @@
 {
 	"deploy":{
-		"container":"TOMCAT7"
+		"container":"TOMCAT7",
+		"war": [
+		{
+			"file": "WebContent/enchererecup.war"
+		}
 	}
 }
