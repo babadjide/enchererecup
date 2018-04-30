@@ -11,7 +11,7 @@ public final class ConnexionForm {
 	private static final String CHAMP_EMAIL = "email";
 	private static final String CHAMP_PASS = "motdepasse";	
 	private static final String CHAMP_CONNEXION = "connexion";
-	private String resultat;
+	private String resultat = "";
 	private HashMap<String, String> erreurs = new HashMap<String, String>();
 	
 	BaseUtilisateur baseutilisateur = new BaseUtilisateur();
