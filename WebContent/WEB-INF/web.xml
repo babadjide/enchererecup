@@ -18,7 +18,7 @@
   </filter-mapping>
   
 <welcome-file-list>
-	<welcome-file>connexion</welcome-file>
+	<welcome-file>accueil</welcome-file>
 </welcome-file-list>
   
   
@@ -37,7 +37,7 @@
  </servlet>
  <servlet-mapping>
 	<servlet-name>Connexion</servlet-name>
-	<url-pattern>/connexion</url-pattern>
+	<url-pattern>/accueil</url-pattern>
  </servlet-mapping>
  
   <servlet>
