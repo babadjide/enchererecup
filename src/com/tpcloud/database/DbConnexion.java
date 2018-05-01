@@ -21,8 +21,8 @@ public class DbConnexion {
 		String motDePasse = "PIBLdIN5wiPtsEoNtak";
 		java.sql.Connection connexion = null;
 		try {
-			//connexion = DriverManager.getConnection( url, utilisateur, motDePasse );
-			connexion = DriverManager.getConnection("mysql -h bt6gmrwbm-mysql.services.clever-cloud.com -P 3306 -u uoizcqliocvbhu53 -p bt6gmrwbm");
+			connexion = DriverManager.getConnection( url, utilisateur, motDePasse );
+			//connexion = DriverManager.getConnection("mysql -h bt6gmrwbm-mysql.services.clever-cloud.com -P 3306 -u uoizcqliocvbhu53 -p bt6gmrwbm");
 			/* Ici, nous placerons nos requêtes vers la BDD */
 			/* ... */
 
