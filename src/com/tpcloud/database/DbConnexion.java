@@ -16,7 +16,7 @@ public class DbConnexion {
 		}
 		
 		/* Connexion à la base de données */
-		String url = "bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm";
+		String url = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm";
 		String utilisateur = "uoizcqliocvbhu53";
 		String motDePasse = "PIBLdIN5wiPtsEoNtak";
 		java.sql.Connection connexion = null;
