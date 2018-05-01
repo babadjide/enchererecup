@@ -27,7 +27,7 @@ public class DbConnexion {
 			/* ... */
 
 		} catch ( SQLException e ) {
-			System.out.println(e.getMessage());		
+			System.out.println(e.getMessage());
 		} //finally {
 			//if ( connexion != null )
 				//try {
