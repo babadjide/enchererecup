@@ -9,7 +9,7 @@ import com.mysql.jdbc.Statement;
 public class DbConnexion {
 	
 	//String url = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm?autoReconnect=true&ampcharacterEncoding=cp1250";
-	static final String URL = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm?autoReconnect=true&amp;characterEncoding=cp1250";
+	static final String URL = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/";
 	static final String UTILISATEUR = "uoizcqliocvbhu53";
 	static final String MOTDEPASSE = "PIBLdIN5wiPtsEoNtak";
 	
