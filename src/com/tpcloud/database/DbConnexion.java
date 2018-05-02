@@ -10,13 +10,13 @@ public class DbConnexion {
 	public java.sql.Connection dbconnexion(){
 		/* Chargement du driver JDBC pour MySQL */
 		try {
-		    Class.forName( "com.mysql.jdbc.Driver" );
+		    Class.forName( "com.mysql.cj.jdbc.Driver" );
 		} catch ( ClassNotFoundException e ) {
 		    System.out.println(e.getMessage());
 		}
 		
 		/* Connexion à la base de données */
-		String url = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm?autoReconnect=true&ampcharacterEncoding=cp1250";
+		String url = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm?autoReconnect=true&amp;characterEncoding=cp1250";
 		String utilisateur = "uoizcqliocvbhu53";
 		String motDePasse = "PIBLdIN5wiPtsEoNtak";
 		java.sql.Connection connexion = null;
