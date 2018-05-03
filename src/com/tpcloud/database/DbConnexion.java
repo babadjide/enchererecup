@@ -22,7 +22,8 @@ public class DbConnexion {
 		/* Chargement du driver JDBC pour MySQL */
 		try {
 		    Class.forName( "com.mysql.jdbc.Driver" );
-		    connexion = DriverManager.getConnection("jdbc:mysql://"+HOSTNAME+":"+PORT+"/"+DATABASE+", "+UTILISATEUR+", "+MOTDEPASSE);
+		    //connexion = DriverManager.getConnection("jdbc:mysql://"+HOSTNAME+":"+PORT+"/"+DATABASE+", "+UTILISATEUR+", "+MOTDEPASSE);
+		    connexion = DriverManager.getConnection("\"jdbc:mysql://" + HOSTNAME + ":" + PORT + "/" + DATABASE + "\"", "\"" + UTILISATEUR + "\"" , "\"" +MOTDEPASSE + "\"");
 		} catch ( ClassNotFoundException e ) {
 		    throw e;
 		} catch ( SQLException e ) {
