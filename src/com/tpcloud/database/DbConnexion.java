@@ -22,7 +22,7 @@ public class DbConnexion {
 		/* Chargement du driver JDBC pour MySQL */
 		try {
 		    Class.forName( "com.mysql.jdbc.Driver" );
-		    connexion = DriverManager.getConnection("mysql -h bt6gmrwbm-mysql.services.clever-cloud.com -P 3306 -u uoizcqliocvbhu53 -p bt6gmrwbm");
+		    connexion = DriverManager.getConnection("jdbc:mysql://"+HOSTNAME+":"+PORT+"/"+DATABASE+", "+UTILISATEUR+", "+MOTDEPASSE);
 		} catch ( ClassNotFoundException e ) {
 		    throw e;
 		} catch ( SQLException e ) {
