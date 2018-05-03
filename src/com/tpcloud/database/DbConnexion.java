@@ -9,21 +9,27 @@ import com.mysql.jdbc.Statement;
 public class DbConnexion {
 	
 	//String url = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm?autoReconnect=true&ampcharacterEncoding=cp1250";
-	static final String URL = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/";
+	static final String URL = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm";
 	static final String UTILISATEUR = "uoizcqliocvbhu53";
 	static final String MOTDEPASSE = "PIBLdIN5wiPtsEoNtak";
+	static final String HOSTNAME = "bt6gmrwbm-mysql.services.clever-cloud.com";
+	static final String PORT = "3306";
+	static final String DATABASE = "bt6gmrwbm";
+	
 	
 	public java.sql.Connection dbconnexion() throws Exception {
 		java.sql.Connection connexion = null;
 		/* Chargement du driver JDBC pour MySQL */
 		try {
-		    Class.forName( "com.mysql.jdbc.Driver" );		    
-		    connexion = DriverManager.getConnection( URL, UTILISATEUR, MOTDEPASSE );		    
+		    Class.forName( "com.mysql.jdbc.Driver" );
+		    connexion = DriverManager.getConnection("mysql -h bt6gmrwbm-mysql.services.clever-cloud.com -P 3306 -u uoizcqliocvbhu53 -p bt6gmrwbm");
 		} catch ( ClassNotFoundException e ) {
 		    throw e;
 		} catch ( SQLException e ) {
 			throw e;
 		}
+		
+		//MySQL mysql = new MySQL(HOSTNAME, PORT, DATABASE, UTILISATEUR, MOTDEPASSE);
 		System.out.println("Connexion établie");
 		return connexion;
 		}
