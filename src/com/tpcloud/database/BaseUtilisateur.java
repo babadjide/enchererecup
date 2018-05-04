@@ -32,7 +32,7 @@ public class BaseUtilisateur {
 		try{
 			/* Création de l'objet gérant les requêtes */						
 			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			Context envCtx = (Context) initCtx.lookup("java:comp/env/");
 			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
 			connexion = ds.getConnection();
 			
@@ -57,7 +57,7 @@ public class BaseUtilisateur {
 		try{
 			/* Création de l'objet gérant les requêtes */						
 			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			Context envCtx = (Context) initCtx.lookup("java:comp/env/");
 			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
 			connexion = ds.getConnection();
 			

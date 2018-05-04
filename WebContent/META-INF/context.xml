@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context>
+<Context crossContext="true" reloadable="true">
 
 	<Resource name="jdbc/bt6gmrwbm"
 
@@ -13,10 +13,13 @@
 
 	driverClassName="com.mysql.jdbc.Driver"
 
-	url="jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/enchererecup"
+	url="jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm"
 
 	maxActive="15"
 
 	maxIdle="3"/>
+	    <ResourceLink name="jdbc/bt6gmrwbm" global="jdbc/bt6gmrwbm"
+
+        type="javax.sql.DataSource" />
 
 </Context>
