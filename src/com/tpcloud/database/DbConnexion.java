@@ -3,13 +3,18 @@ package com.tpcloud.database;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+
+import org.apache.tomcat.jdbc.pool.DataSource;
+
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
 public class DbConnexion {
 	
-	//String url = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm?autoReconnect=true&ampcharacterEncoding=cp1250";
-	static final String URL = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm";
+	static final String URL = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm?autoReconnect=true&amp;characterEncoding=cp1250";
+	//static final String URL = "jdbc:mysql://bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm";
 	static final String UTILISATEUR = "uoizcqliocvbhu53";
 	static final String MOTDEPASSE = "PIBLdIN5wiPtsEoNtak";
 	static final String HOSTNAME = "bt6gmrwbm-mysql.services.clever-cloud.com";
@@ -29,6 +34,17 @@ public class DbConnexion {
 		} catch ( SQLException e ) {
 			throw e;
 		}
+		
+		Context initCtx = new InitialContext();
+
+		Context envCtx = (Context) initCtx.lookup("java:comp/env");
+
+		DataSource ds = (DataSource)
+
+		envCtx.lookup("jdbc/bt6gmrwbm");
+		
+		
+		
 		
 		//MySQL mysql = new MySQL(HOSTNAME, PORT, DATABASE, UTILISATEUR, MOTDEPASSE);
 		System.out.println("Connexion établie");

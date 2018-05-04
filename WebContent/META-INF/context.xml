@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+	<Resource name="jdbc/bt6gmrwbm"
+
+	auth="Container"
+
+	type="javax.sql.DataSource"
+
+	username="uoizcqliocvbhu53"
+
+	password="PIBLdIN5wiPtsEoNtak"
+
+	driverClassName="com.mysql.jdbc.Driver"
+
+	url="jdbc:mysql:/bt6gmrwbm-mysql.services.clever-cloud.com:3306/enchererecup"
+
+	maxActive="15"
+
+	maxIdle="3"/>
+
+</Context>

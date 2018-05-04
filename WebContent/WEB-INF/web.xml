@@ -17,6 +17,20 @@
      <url-pattern>/*</url-pattern>
   </filter-mapping>
   
+  
+  	<resource-ref>
+
+		<description>[Your Description]</description>
+
+		<res-ref-name>jdbc/bt6gmrwbm</res-ref-name>
+
+		<res-type>javax.sql.DataSource</res-type>
+
+		<res-auth>Container</res-auth>
+
+	</resource-ref>
+  
+  
 <welcome-file-list>
 	<welcome-file>connexion</welcome-file>
 </welcome-file-list>
@@ -75,6 +89,9 @@
 	<servlet-name>NouvelleVente</servlet-name>
 	<url-pattern>/nouvellevente</url-pattern>
  </servlet-mapping>
+ 
+ 
+ 
 </web-app>
 
 
