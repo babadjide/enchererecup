@@ -20,7 +20,7 @@
   
   	<resource-ref>
 
-		<description>[Your Description]</description>
+		<description>dataAccess</description>
 
 		<res-ref-name>jdbc/bt6gmrwbm</res-ref-name>
 
