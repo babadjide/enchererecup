@@ -21,7 +21,13 @@ public class TableauBordUtilisateur extends HttpServlet {
 	public static final String ATT_SESSION_USER = "sessionUtilisateur";
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		TableauDeBordUtilisateurForm tableau = new TableauDeBordUtilisateurForm();
-		HashMap<String, Vente> lesventes = tableau.listeDesVentes(request);
+		HashMap<String, Vente> lesventes = null;
+		try {
+			lesventes = tableau.listeDesVentes(request);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		HttpSession session = request.getSession();
 		

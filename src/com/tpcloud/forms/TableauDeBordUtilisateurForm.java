@@ -38,7 +38,7 @@ public final class TableauDeBordUtilisateurForm {
 	DbConnexion nouvelleConnexion = new DbConnexion();
 	
 	
-	public HashMap<String, Vente> listeDesVentes(HttpServletRequest request){
+	public HashMap<String, Vente> listeDesVentes(HttpServletRequest request) throws Exception{
 		java.util.Date[] dateDesVentes = ecartDate();
 		HttpSession session = request.getSession();
 		Utilisateur utilisateurConnecte = (Utilisateur)session.getAttribute(ATT_USER);
@@ -65,8 +65,7 @@ public final class TableauDeBordUtilisateurForm {
     	
     	try{
     		/* Création de l'objet gérant les requêtes */
-			Statement statement = nouvelleConnexion.dbconnexion().createStatement();
-			
+			Statement statement = nouvelleConnexion.dbconnexion().createStatement();			
 			ResultSet resultatVente = statement.executeQuery("select idVente, statut, date_debut, miseSup, idArticle, TIME(date_debut) from vente");
 			
 			/*récupérer le nombre de vente*/

@@ -28,50 +28,35 @@ public class DbConnexion {
 		try {
 		    Class.forName( "com.mysql.jdbc.Driver" );
 		    //connexion = DriverManager.getConnection("jdbc:mysql://"+HOSTNAME+":"+PORT+"/"+DATABASE+", "+UTILISATEUR+", "+MOTDEPASSE);
-		    connexion = DriverManager.getConnection("\"jdbc:mysql://" + HOSTNAME + ":" + PORT + "/" + DATABASE + "\"", "\"" + UTILISATEUR + "\"" , "\"" +MOTDEPASSE + "\"");
+		    //connexion = DriverManager.getConnection("\"jdbc:mysql://" + HOSTNAME + ":" + PORT + "/" + DATABASE + "\"", "\"" + UTILISATEUR + "\"" , "\"" +MOTDEPASSE + "\"");
+		    
+		    
+			Context initCtx = new InitialContext();
+
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+
+			DataSource ds = (DataSource)
+
+			envCtx.lookup("jdbc/bt6gmrwbm");
+			
+			connexion = ds.getConnection();
 		} catch ( ClassNotFoundException e ) {
 		    throw e;
 		} catch ( SQLException e ) {
 			throw e;
-		}
-		
-		Context initCtx = new InitialContext();
-
-		Context envCtx = (Context) initCtx.lookup("java:comp/env");
-
-		DataSource ds = (DataSource)
-
-		envCtx.lookup("jdbc/bt6gmrwbm");
-		
-		
-		
+		} finally {
+			if ( connexion != null )
+				try {
+					/* Fermeture de la connexion */
+					connexion.close();
+				} catch ( SQLException ignore ) {
+			/* Si une erreur survient lors de la fermeture, il suffit de l'ignorer. */
+				}
+		}		
 		
 		//MySQL mysql = new MySQL(HOSTNAME, PORT, DATABASE, UTILISATEUR, MOTDEPASSE);
 		System.out.println("Connexion établie");
 		return connexion;
 		}
 }
-		
-		/* Connexion à la base de données */
 
-		
-		//try {
-			
-			//connexion = DriverManager.getConnection("mysql -h bt6gmrwbm-mysql.services.clever-cloud.com -P 3306 -u uoizcqliocvbhu53 -p bt6gmrwbm");
-			/* Ici, nous placerons nos requêtes vers la BDD */
-			/* ... */
-
-		//} catch ( SQLException e ) {
-			//System.out.println(e.getMessage());
-		//} //finally {
-			//if ( connexion != null )
-				//try {
-					/* Fermeture de la connexion */
-					//connexion.close();
-				//} catch ( SQLException ignore ) {
-					/* Si une erreur survient lors de la fermeture, il suffit de l'ignorer. */
-				//}
-		//}
-		//return connexion;
-	//}	
-//}
