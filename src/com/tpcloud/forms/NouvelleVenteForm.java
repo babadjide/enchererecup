@@ -4,8 +4,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import com.tpcloud.beans.Article;
 import com.tpcloud.beans.Utilisateur;
@@ -26,6 +29,7 @@ public final class NouvelleVenteForm {
 	private String resultat = "";
 	Utilisateur utilisateur;
 	private HashMap<String, String> erreurs = new HashMap<String, String>();
+	java.sql.Connection connexion = null;
 		
 	Article article = new Article();
     public String getResultat(){
@@ -122,7 +126,13 @@ public final class NouvelleVenteForm {
 	public String engistrerArticle(Article article){
 		String RESULTAT_INSERTION_ARTICLE = "";
 		try{
-			Statement statement = nouvelleConnexion.dbconnexion().createStatement();
+			/* Création de l'objet gérant les requêtes */						
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
+			connexion = ds.getConnection();
+			
+			Statement statement = connexion.createStatement();
 			statement.executeUpdate("INSERT INTO Article (nom, description, statut, date_ajout, idUtilisateur) VALUES ('"+article.getNom()+"','"+article.getDescription()+"','"+article.getStatut()+"', NOW(), "+utilisateur.getId()+")");
 		}catch(Exception e){
 			//setErreur("RESULTAT_INSERTION_ARTICLE", e.getMessage());
@@ -135,7 +145,13 @@ public final class NouvelleVenteForm {
 	public String enregistrerVente(Article article, Vente vente){
 		String RESULTAT_INSERTION_VENTE = "";		
 		try{
-			Statement statement = nouvelleConnexion.dbconnexion().createStatement();
+			/* Création de l'objet gérant les requêtes */						
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
+			connexion = ds.getConnection();
+			
+			Statement statement = connexion.createStatement();
 			statement.executeUpdate("INSERT INTO Vente (statut, date_debut, idArticle) VALUES ('"+vente.getStatut()+"', NOW(), "+article.getIdArticle()+")");
 		}catch(Exception e){
 			//setErreur("RESULTAT_INSERTION_VENTE", e.getMessage());
@@ -148,7 +164,13 @@ public final class NouvelleVenteForm {
 	public int getIdArticle(){
 		int idArticle = 0;
 		try{
-			Statement statement = nouvelleConnexion.dbconnexion().createStatement();
+			/* Création de l'objet gérant les requêtes */						
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
+			connexion = ds.getConnection();
+			
+			Statement statement = connexion.createStatement();
 			ResultSet resultatIdArticle = statement.executeQuery("SELECT idArticle FROM Article ORDER BY date_ajout");
 			while(resultatIdArticle.next()){
 				idArticle = resultatIdArticle.getInt("idArticle");

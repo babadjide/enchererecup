@@ -4,8 +4,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import com.tpcloud.beans.Article;
 import com.tpcloud.beans.Mise;
@@ -22,6 +25,7 @@ public final class NouvelleMiseForm {
 	public static final String LISTE_VENTES = "listeventes";
 	public static final String RESULTAT = "resultat";
 	private String resultat = "";
+	java.sql.Connection connexion = null;
 	
 	
 	/*Création d'une instance de connexion*/
@@ -112,7 +116,13 @@ public final class NouvelleMiseForm {
 	private Vente getVente(int idVente){
 		Vente vente = new Vente();
 		try{
-			Statement statement = nouvelleConnexion.dbconnexion().createStatement();
+			/* Création de l'objet gérant les requêtes */						
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
+			connexion = ds.getConnection();
+			
+			Statement statement = connexion.createStatement();
 			ResultSet resultatVente = statement.executeQuery("select * from Vente where idVente="+idVente);
 			while(resultatVente.next()){
 				vente.setIdVente(idVente);

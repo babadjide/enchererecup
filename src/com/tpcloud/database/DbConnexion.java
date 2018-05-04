@@ -6,9 +6,7 @@ import java.sql.SQLException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
-import org.apache.tomcat.jdbc.pool.DataSource;
-
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 import com.mysql.jdbc.Statement;
 
 public class DbConnexion {

@@ -6,8 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.sql.DataSource;
 
+import com.mysql.jdbc.Connection;
 import com.tpcloud.beans.Utilisateur;
 
 public class BaseUtilisateur {
@@ -18,6 +22,7 @@ public class BaseUtilisateur {
 	private static final String INSERT_ERROR = "insertion";
 	private static final String DOUBLON_ERROR = "doublon";
 	private String MESSAGE = "";
+	java.sql.Connection connexion = null;
 	
 	Utilisateur utilisateurlog = new Utilisateur();
 	
@@ -25,8 +30,13 @@ public class BaseUtilisateur {
         /* Ici, nous placerons le code de nos manipulations */
         /* ... */		
 		try{
-			/* Création de l'objet gérant les requêtes */
-			Statement statement = nouvelleConnexion.dbconnexion().createStatement();
+			/* Création de l'objet gérant les requêtes */						
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
+			connexion = ds.getConnection();
+			
+			Statement statement = connexion.createStatement();
 			
 			/*Vérification de l'existence d'un compte avec ce nom*/
 			ResultSet resultat = statement.executeQuery("select * from Utilisateur where nom='"+utilisateur.getNom()+"'");
@@ -45,8 +55,13 @@ public class BaseUtilisateur {
 	
 	public String connecterUtilisateur(Utilisateur utilisateur){
 		try{
-			/* Création de l'objet gérant les requêtes */
-			Statement statement = nouvelleConnexion.dbconnexion().createStatement();
+			/* Création de l'objet gérant les requêtes */						
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
+			connexion = ds.getConnection();
+			
+			Statement statement = connexion.createStatement();
 			
 			ResultSet resultat = statement.executeQuery("select * from Utilisateur where email='"+utilisateur.getEmail()+"' and mot_de_passe='"+utilisateur.getMotdepasse()+"'");
 			if(resultat.next()){

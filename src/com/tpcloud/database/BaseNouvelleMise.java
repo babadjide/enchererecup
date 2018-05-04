@@ -4,7 +4,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.sql.DataSource;
 
 import com.tpcloud.beans.Mise;
 import com.tpcloud.beans.Utilisateur;
@@ -16,13 +19,20 @@ public final class BaseNouvelleMise {
 	String resultat = "";
 	/*Création d'une instance de connexion*/
 	DbConnexion nouvelleConnexion = new DbConnexion();
+	java.sql.Connection connexion = null;
 	
 	public HashMap<String, String> enregistrerMise(int montantmise, int idvente, Utilisateur utilisateur){
 				
 		try{
 			resultat = validationMise(montantmise, idvente);
 			if("".equalsIgnoreCase(resultat)){
-				Statement statement = nouvelleConnexion.dbconnexion().createStatement();
+				/* Création de l'objet gérant les requêtes */						
+				Context initCtx = new InitialContext();
+				Context envCtx = (Context) initCtx.lookup("java:comp/env");
+				DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
+				connexion = ds.getConnection();
+				
+				Statement statement = connexion.createStatement();
 				String montantmiseStr = String.valueOf(montantmise);
 				statement.executeUpdate("INSERT INTO Mise (montant, idVente, idUtilisateur) VALUES ('"+montantmiseStr+"', "+idvente+", "+utilisateur.getId()+")");
 				statement.executeUpdate("UPDATE Vente SET miseSup='"+montantmiseStr+"' WHERE idVente="+idvente);
@@ -40,7 +50,13 @@ public final class BaseNouvelleMise {
 		int miseSup = 0;
 		String resultatValidation = "";
 		try{
-			Statement statement = nouvelleConnexion.dbconnexion().createStatement();
+			/* Création de l'objet gérant les requêtes */						
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
+			connexion = ds.getConnection();
+			
+			Statement statement = connexion.createStatement();
 			ResultSet resultatMisesup = statement.executeQuery("select miseSup from vente where idVente="+idvente);
 			while(resultatMisesup.next()){
 				if("NULL".equalsIgnoreCase(resultatMisesup.getString("miseSup"))){

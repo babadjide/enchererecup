@@ -10,8 +10,11 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.TimeZone;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -32,6 +35,7 @@ public final class TableauDeBordUtilisateurForm {
 	String[] lesmises;
 	private static final String FORMAT_DATE = "dd/MM/yyyy HH:mm:ss";
 	private Calendar calendrier = Calendar.getInstance();
+	java.sql.Connection connexion = null;
 	
 	
 	/*Création d'une instance de connexion*/
@@ -64,8 +68,13 @@ public final class TableauDeBordUtilisateurForm {
     	Vente vente = new Vente();
     	
     	try{
-    		/* Création de l'objet gérant les requêtes */
-			Statement statement = nouvelleConnexion.dbconnexion().createStatement();			
+			/* Création de l'objet gérant les requêtes */						
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
+			connexion = ds.getConnection();
+			
+			Statement statement = connexion.createStatement();			
 			ResultSet resultatVente = statement.executeQuery("select idVente, statut, date_debut, miseSup, idArticle, TIME(date_debut) from vente");
 			
 			/*récupérer le nombre de vente*/
@@ -190,7 +199,13 @@ public final class TableauDeBordUtilisateurForm {
     	Date[] listeDates = null;
     	try{
     		/* Création de l'objet gérant les requêtes */
-    		Statement statement = nouvelleConnexion.dbconnexion().createStatement();
+			/* Création de l'objet gérant les requêtes */						
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
+			connexion = ds.getConnection();
+			
+			Statement statement = connexion.createStatement();
     		ResultSet resultatNombre = statement.executeQuery("SELECT COUNT* FROM Vente");
     		int nombredevente = 0;
     		while(resultatNombre.next()){
