@@ -37,7 +37,7 @@ public class DbConnexion {
 
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-			DataSource ds = (DataSource)
+			org.apache.tomcat.dbcp.dbcp.BasicDataSource ds = (org.apache.tomcat.dbcp.dbcp.BasicDataSource)
 
 			envCtx.lookup("jdbc/bt6gmrwbm");
 			

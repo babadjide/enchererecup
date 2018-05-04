@@ -7,8 +7,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.sql.DataSource;
 
-public class Config implements ServletContextListener {
-    private static final String ATTRIBUTE_NAME = "config";
+public class Config  {
+    /*private static final String ATTRIBUTE_NAME = "config";
     private DataSource dataSource;
 
     @Override
@@ -34,5 +34,5 @@ public class Config implements ServletContextListener {
 
     public static Config getInstance(ServletContext servletContext) {
         return (Config) servletContext.getAttribute(ATTRIBUTE_NAME);
-    }
+    }*/
 }
