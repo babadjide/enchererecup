@@ -27,8 +27,9 @@ public class DbConnexion {
 	public java.sql.Connection dbconnexion() throws Exception {
 		java.sql.Connection connexion = null;
 		/* Chargement du driver JDBC pour MySQL */
+		
 		try {
-		    Class.forName( "com.mysql.jdbc.Driver" );
+		    //Class.forName( "com.mysql.jdbc.Driver" );
 		    //connexion = DriverManager.getConnection("jdbc:mysql://"+HOSTNAME+":"+PORT+"/"+DATABASE+", "+UTILISATEUR+", "+MOTDEPASSE);
 		    //connexion = DriverManager.getConnection("\"jdbc:mysql://" + HOSTNAME + ":" + PORT + "/" + DATABASE + "\"", "\"" + UTILISATEUR + "\"" , "\"" +MOTDEPASSE + "\"");
 
@@ -42,8 +43,6 @@ public class DbConnexion {
 			envCtx.lookup("jdbc/bt6gmrwbm");
 			
 			connexion = ds.getConnection();
-		} catch ( ClassNotFoundException e ) {
-		    throw e;
 		} catch ( SQLException e ) {
 			throw e;
 		} //finally {

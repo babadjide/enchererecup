@@ -13,7 +13,7 @@
 
 	driverClassName="com.mysql.jdbc.Driver"
 
-	url="jdbc:mysql:/bt6gmrwbm-mysql.services.clever-cloud.com:3306/enchererecup"
+	url="jdbc:mysql:/bt6gmrwbm-mysql.services.clever-cloud.com:3306/bt6gmrwbm"
 
 	maxActive="15"
 
