@@ -21,6 +21,8 @@ public class DbConnexion {
 	static final String PORT = "3306";
 	static final String DATABASE = "bt6gmrwbm";
 	
+	//Config config  = new Config();
+	
 	
 	public java.sql.Connection dbconnexion() throws Exception {
 		java.sql.Connection connexion = null;
@@ -29,7 +31,7 @@ public class DbConnexion {
 		    Class.forName( "com.mysql.jdbc.Driver" );
 		    //connexion = DriverManager.getConnection("jdbc:mysql://"+HOSTNAME+":"+PORT+"/"+DATABASE+", "+UTILISATEUR+", "+MOTDEPASSE);
 		    //connexion = DriverManager.getConnection("\"jdbc:mysql://" + HOSTNAME + ":" + PORT + "/" + DATABASE + "\"", "\"" + UTILISATEUR + "\"" , "\"" +MOTDEPASSE + "\"");
-		    
+
 		    
 			Context initCtx = new InitialContext();
 
@@ -44,15 +46,15 @@ public class DbConnexion {
 		    throw e;
 		} catch ( SQLException e ) {
 			throw e;
-		} finally {
-			if ( connexion != null )
-				try {
+		} //finally {
+			//if ( connexion != null )
+				//try {
 					/* Fermeture de la connexion */
-					connexion.close();
-				} catch ( SQLException ignore ) {
+					//connexion.close();
+				//} catch ( SQLException ignore ) {
 			/* Si une erreur survient lors de la fermeture, il suffit de l'ignorer. */
-				}
-		}		
+				//}
+		//}		
 		
 		//MySQL mysql = new MySQL(HOSTNAME, PORT, DATABASE, UTILISATEUR, MOTDEPASSE);
 		System.out.println("Connexion établie");
