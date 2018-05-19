@@ -127,10 +127,11 @@ public final class NouvelleVenteForm {
 		String RESULTAT_INSERTION_ARTICLE = "";
 		try{
 			/* Création de l'objet gérant les requêtes */						
-			Context initCtx = new InitialContext();
+			/*Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
-			connexion = ds.getConnection();
+			connexion = ds.getConnection();*/
+			connexion = nouvelleConnexion.dbconnexion();
 			
 			Statement statement = connexion.createStatement();
 			statement.executeUpdate("INSERT INTO Article (nom, description, statut, date_ajout, idUtilisateur) VALUES ('"+article.getNom()+"','"+article.getDescription()+"','"+article.getStatut()+"', NOW(), "+utilisateur.getId()+")");
@@ -146,10 +147,11 @@ public final class NouvelleVenteForm {
 		String RESULTAT_INSERTION_VENTE = "";		
 		try{
 			/* Création de l'objet gérant les requêtes */						
-			Context initCtx = new InitialContext();
+			/*Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
-			connexion = ds.getConnection();
+			connexion = ds.getConnection();*/
+			connexion = nouvelleConnexion.dbconnexion();
 			
 			Statement statement = connexion.createStatement();
 			statement.executeUpdate("INSERT INTO Vente (statut, date_debut, idArticle) VALUES ('"+vente.getStatut()+"', NOW(), "+article.getIdArticle()+")");
@@ -165,10 +167,11 @@ public final class NouvelleVenteForm {
 		int idArticle = 0;
 		try{
 			/* Création de l'objet gérant les requêtes */						
-			Context initCtx = new InitialContext();
+			/*Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
-			connexion = ds.getConnection();
+			connexion = ds.getConnection();*/
+			connexion = nouvelleConnexion.dbconnexion();
 			
 			Statement statement = connexion.createStatement();
 			ResultSet resultatIdArticle = statement.executeQuery("SELECT idArticle FROM Article ORDER BY date_ajout");

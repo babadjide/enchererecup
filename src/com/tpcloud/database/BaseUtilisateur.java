@@ -31,10 +31,11 @@ public class BaseUtilisateur {
         /* ... */		
 		try{
 			/* Création de l'objet gérant les requêtes */						
-			Context initCtx = new InitialContext();
+			/*Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env/");
 			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
-			connexion = ds.getConnection();
+			connexion = ds.getConnection();*/
+			connexion = nouvelleConnexion.dbconnexion();
 			
 			Statement statement = connexion.createStatement();
 			
@@ -56,10 +57,11 @@ public class BaseUtilisateur {
 	public String connecterUtilisateur(Utilisateur utilisateur){
 		try{
 			/* Création de l'objet gérant les requêtes */						
-			Context initCtx = new InitialContext();
+			/*Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env/");
 			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
-			connexion = ds.getConnection();
+			connexion = ds.getConnection();*/
+			connexion = nouvelleConnexion.dbconnexion();
 			
 			Statement statement = connexion.createStatement();
 			

@@ -69,10 +69,11 @@ public final class TableauDeBordUtilisateurForm {
     	
     	try{
 			/* Création de l'objet gérant les requêtes */						
-			Context initCtx = new InitialContext();
+			/*Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
-			connexion = ds.getConnection();
+			connexion = ds.getConnection();*/
+			connexion = nouvelleConnexion.dbconnexion();
 			
 			Statement statement = connexion.createStatement();			
 			ResultSet resultatVente = statement.executeQuery("select idVente, statut, date_debut, miseSup, idArticle, TIME(date_debut) from vente");
@@ -200,10 +201,11 @@ public final class TableauDeBordUtilisateurForm {
     	try{
     		/* Création de l'objet gérant les requêtes */
 			/* Création de l'objet gérant les requêtes */						
-			Context initCtx = new InitialContext();
+			/*Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
-			connexion = ds.getConnection();
+			connexion = ds.getConnection();*/
+    		connexion = nouvelleConnexion.dbconnexion();
 			
 			Statement statement = connexion.createStatement();
     		ResultSet resultatNombre = statement.executeQuery("SELECT COUNT* FROM Vente");

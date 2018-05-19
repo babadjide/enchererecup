@@ -27,12 +27,21 @@ public class DbConnexion {
 		/* Chargement du driver JDBC pour MySQL */
 		
 		try {
-		    //Class.forName( "com.mysql.jdbc.Driver" );
-		    //connexion = DriverManager.getConnection("jdbc:mysql://"+HOSTNAME+":"+PORT+"/"+DATABASE+", "+UTILISATEUR+", "+MOTDEPASSE);
-		    //connexion = DriverManager.getConnection("\"jdbc:mysql://" + HOSTNAME + ":" + PORT + "/" + DATABASE + "\"", "\"" + UTILISATEUR + "\"" , "\"" +MOTDEPASSE + "\"");
-
-		    
-			Context initCtx = new InitialContext();
+		      Class.forName( "com.mysql.jdbc.Driver" );
+			  //String dbName = System.getProperty("RDS_DB_NAME");
+		      String userName = System.getProperty("MYSQL_ADDON_USER");
+		      String password = System.getProperty("MYSQL_ADDON_PASSWORD");
+		      String hostname = System.getProperty("MYSQL_ADDON_HOST");
+		      String port = System.getProperty("MYSQL_ADDON_PORT");
+		      String jdbcUrl = "jdbc:mysql://" + hostname + ":" + port + "/" + "?user=" + userName + "&password=" + password;
+		      //logger.trace("Getting remote connection with connection string from environment variables.");
+		      connexion = DriverManager.getConnection(jdbcUrl);
+		      //logger.info("Remote connection successful.");			
+			
+			
+		    /*connexion = DriverManager.getConnection("jdbc:mysql://"+HOSTNAME+":"+PORT+"/"+DATABASE+", "+UTILISATEUR+", "+MOTDEPASSE);
+		    connexion = DriverManager.getConnection("\"jdbc:mysql://" + HOSTNAME + ":" + PORT + "/" + DATABASE + "\"", "\"" + UTILISATEUR + "\"" , "\"" +MOTDEPASSE + "\"");
+            Context initCtx = new InitialContext();
 
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
@@ -40,7 +49,7 @@ public class DbConnexion {
 
 			envCtx.lookup("jdbc/bt6gmrwbm");
 			
-			connexion = ds.getConnection();
+			connexion = ds.getConnection();*/
 		} catch ( SQLException e ) {
 			throw e;
 		} //finally {

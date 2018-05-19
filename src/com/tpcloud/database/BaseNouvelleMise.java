@@ -27,10 +27,10 @@ public final class BaseNouvelleMise {
 			resultat = validationMise(montantmise, idvente);
 			if("".equalsIgnoreCase(resultat)){
 				/* Création de l'objet gérant les requêtes */						
-				Context initCtx = new InitialContext();
+				/*Context initCtx = new InitialContext();
 				Context envCtx = (Context) initCtx.lookup("java:comp/env/");
-				DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
-				connexion = ds.getConnection();
+				DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");*/
+				connexion = nouvelleConnexion.dbconnexion();
 				
 				Statement statement = connexion.createStatement();
 				String montantmiseStr = String.valueOf(montantmise);
@@ -51,10 +51,10 @@ public final class BaseNouvelleMise {
 		String resultatValidation = "";
 		try{
 			/* Création de l'objet gérant les requêtes */						
-			Context initCtx = new InitialContext();
+			/*Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");
-			connexion = ds.getConnection();
+			DataSource ds = (DataSource)envCtx.lookup("jdbc/bt6gmrwbm");*/
+			connexion = nouvelleConnexion.dbconnexion();
 			
 			Statement statement = connexion.createStatement();
 			ResultSet resultatMisesup = statement.executeQuery("select miseSup from vente where idVente="+idvente);
